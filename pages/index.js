@@ -48,44 +48,70 @@ export default function Home() {
   return (
     <>
       <Head>
-        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
         <title>JukeSports</title>
+        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       </Head>
-      <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 20px', backgroundColor: '#111', color: 'white', position: 'sticky', top: 0, zIndex: 1000 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <img src="/logos/jukesports_logo.png" alt="Juke Logo" style={{ height: 40 }} />
-          <h2 style={{ margin: 0 }}>JukeSports</h2>
+      <header style={{
+        background: '#111',
+        padding: '12px 24px',
+        color: '#fff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img src="/logos/jukesports_logo.png" alt="JukeSports" style={{ height: 48 }} />
+          <h1 style={{ fontSize: '1.75rem', margin: 0 }}>JukeSports</h1>
         </div>
         <nav style={{ display: 'flex', gap: '20px' }}>
-          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>NCAA</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>PLL</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>NLL</a>
+          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>NCAA</a>
+          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>PLL</a>
+          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>NLL</a>
         </nav>
       </header>
-      <main style={{ padding: '20px', fontFamily: 'Arial, sans-serif', backgroundColor: '#f2f2f2' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))', gap: '20px' }}>
-          {games.map((game) => (
-            <div key={game.id} style={{ background: '#fff', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 6px rgba(0,0,0,0.1)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  {game.logo1 && <img src={game.logo1} alt={game.team1} width="36" />}
-                  <strong>{game.team1}</strong>
-                </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{game.score1} - {game.score2}</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <strong>{game.team2}</strong>
-                  {game.logo2 && <img src={game.logo2} alt={game.team2} width="36" />}
-                </div>
+      <main style={{
+        backgroundColor: '#f1f1f1',
+        padding: '20px',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gap: '20px',
+        fontFamily: 'Arial, sans-serif'
+      }}>
+        {games.map((game) => (
+          <div key={game.id} style={{
+            background: '#fff',
+            borderRadius: '10px',
+            padding: '16px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '12px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <img src={game.logo1} alt={game.team1} width="36" height="36" />
+                <span style={{ fontWeight: 'bold' }}>{game.team1}</span>
               </div>
-              <div style={{ marginTop: '10px' }}>
-                <blockquote className="twitter-tweet">
-                  <a href={game.highlight}></a>
-                </blockquote>
+              <div style={{ fontSize: '1.4rem', fontWeight: 'bold' }}>{game.score1} - {game.score2}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontWeight: 'bold' }}>{game.team2}</span>
+                {game.logo2 && <img src={game.logo2} alt={game.team2} width="36" height="36" />}
               </div>
             </div>
-          ))}
-        </div>
+            <div>
+              <blockquote className="twitter-tweet">
+                <a href={game.highlight}></a>
+              </blockquote>
+            </div>
+          </div>
+        ))}
       </main>
     </>
   );
 }
+
