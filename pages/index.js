@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import '../styles.css';
+import '../styles/style.css';
+import { Tweet } from 'react-tweet';
 
 const games = [
   {
@@ -42,45 +43,45 @@ const games = [
 
 export default function Home() {
   return (
-    <div className="container">
+    <>
       <Head>
         <title>JukeSports - Live Lacrosse Scores</title>
-        <meta name="description" content="Live NCAA and PLL Lacrosse Scores" />
+        <meta name="description" content="Live scores, highlights, and updates from NCAA, PLL, and NLL lacrosse." />
       </Head>
 
-      <header className="header">
-        <img src="/logos/jukesports_logo.png" alt="JukeSports Logo" className="logo" />
-        <h1 className="title">JukeSports</h1>
-        <nav className="nav">
+      <header>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logos/jukesports_logo.png" alt="JukeSports Logo" />
+          <h1>JukeSports</h1>
+        </div>
+        <nav>
           <a href="#">NCAA</a>
           <a href="#">PLL</a>
           <a href="#">NLL</a>
         </nav>
       </header>
 
-      <main className="grid">
-        {games.map((game, index) => (
-          <div key={index} className="game-card">
-            <div className="game-header">
-              <div className="team">
-                {game.team1Logo && <img src={game.team1Logo} alt={game.team1} className="team-logo" />}
-                <span>{game.team1}</span>
+      <main>
+        <div className="grid">
+          {games.map((game, index) => (
+            <div className="card" key={index}>
+              <div className="score-header">
+                <div className="team">
+                  {game.team1Logo && <img src={game.team1Logo} alt={game.team1} />}
+                  <span>{game.team1}</span>
+                </div>
+                <div className="score">{game.score}</div>
+                <div className="team" style={{ justifyContent: 'flex-end' }}>
+                  {game.team2Logo && <img src={game.team2Logo} alt={game.team2} />}
+                  <span>{game.team2}</span>
+                </div>
               </div>
-              <div className="score">{game.score}</div>
-              <div className="team">
-                {game.team2Logo && <img src={game.team2Logo} alt={game.team2} className="team-logo" />}
-                <span>{game.team2}</span>
-              </div>
+              <div className="network">{game.network}</div>
+              <Tweet id={game.tweetId} />
             </div>
-            <div className="network">Network: {game.network}</div>
-            <blockquote className="twitter-tweet">
-              <a href={`https://twitter.com/i/status/${game.tweetId}`}></a>
-            </blockquote>
-          </div>
-        ))}
+          ))}
+        </div>
       </main>
-
-      <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-    </div>
+    </>
   );
 }
