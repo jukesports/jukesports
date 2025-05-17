@@ -1,33 +1,52 @@
+/* Base styles */
 body {
-  font-family: 'Courier New', monospace;
-  background: #111;
+  background-color: #111;
   color: #fff;
-  padding: 20px;
-  text-align: left;
+  font-family: 'Courier New', monospace;
+  padding: 2rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
 }
+
+/* Header */
 h1 {
-  font-size: 1.5rem;
-}
-hr {
-  border: none;
-  border-top: 2px dashed #666;
-  margin: 1rem 0;
-}
-.logo {
-  height: 20px;
-  margin-right: 8px;
-}
-.teamRow {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 4px 0;
+  gap: 0.5rem;
 }
-.score {
-  margin-left: auto;
+
+/* Divider between games */
+hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 2rem 0;
 }
-.metaRow {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-top: 4px;
+
+/* Game block */
+.game {
+  margin-bottom: 2rem;
+}
+
+/* Team rows */
+.team {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+/* Period/clock display */
+.period {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Logo style (if added later) */
+.logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
