@@ -1,3 +1,4 @@
+// deploy trigger
 import Head from 'next/head';
 import '../styles/style.css';
 import { useEffect, useState } from 'react';
@@ -51,5 +52,3 @@ export default function Home() {
   );
 }
 
-// deploy trigger
-}
