@@ -1,4 +1,4 @@
-// deploy trigger
+// trigger deploy again
 import Head from 'next/head';
 import '../styles/styles.css';
 import { useEffect, useState } from 'react';
