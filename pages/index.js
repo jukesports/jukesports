@@ -33,7 +33,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ todayGames, tomorrowGames }) {
-  const renderGame = (game) => (
+  const renderGame = (game, index) => (
     <div className="game-card" key={game.gameID}>
       <div className="team-row">
         <span>{game.home.names.short}</span>
@@ -44,6 +44,9 @@ export default function Home({ todayGames, tomorrowGames }) {
         <strong>{game.away.score || 0}</strong>
       </div>
       <p className="status">{game.finalMessage || `Pre-game — ${game.startTime}`}</p>
+      {index === 0 && (
+        <><blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">MATT TRAYNOR IS UNCONSCIOUS.<br/><br/>PENN STATE TIES IT.<a href="https://twitter.com/PennStateMLAX?ref_src=twsrc%5Etfw">@PennStateMLAX</a> IS ROLLING. <a href="https://t.co/sAWxkbuavx">pic.twitter.com/sAWxkbuavx</a></p>&mdash; USA Lacrosse Magazine (@USALacrosseMag) <a href="https://twitter.com/USALacrosseMag/status/1924162897304789187?ref_src=twsrc%5Etfw">May 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></>
+      )}
     </div>
   );
 
@@ -53,7 +56,7 @@ export default function Home({ todayGames, tomorrowGames }) {
       <main>
         <h1>🏆 NCAA Lacrosse</h1>
         <h2>Today</h2>
-        {todayGames.length > 0 ? todayGames.map(renderGame) : <p>No games today.</p>}
+        {todayGames.length > 0 ? todayGames.map((game, index) => renderGame(game, index)) : <p>No games today.</p>}
         <h2>Tomorrow</h2>
         {tomorrowGames.length > 0 ? tomorrowGames.map(renderGame) : <p>No games tomorrow.</p>}
       </main>
