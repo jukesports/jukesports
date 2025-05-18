@@ -1,0 +1,32 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background: #111;
+  color: #f8f8f2;
+  padding: 20px;
+}
+h1 {
+  color: gold;
+}
+h2 {
+  margin-top: 40px;
+  color: orange;
+}
+.game-card {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #555;
+}
+.team-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.team-row img {
+  height: 25px;
+  margin-right: 10px;
+}
+.status {
+  margin-top: 8px;
+  font-style: italic;
+  color: #ccc;
+}
